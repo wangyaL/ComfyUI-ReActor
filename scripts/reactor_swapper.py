@@ -55,7 +55,8 @@ models_path_old = os.path.join(os.path.dirname(os.path.dirname(__file__)), "mode
 insightface_path_old = os.path.join(models_path_old, "insightface")
 insightface_models_path_old = os.path.join(insightface_path_old, "models")
 
-models_path = folder_paths.models_dir
+dir_facerestore_models = folder_paths.get_folder_paths("facerestore_models")[0]
+models_path = dir_facerestore_models.replace("/facerestore_models", "")
 insightface_path = os.path.join(models_path, "insightface")
 insightface_models_path = os.path.join(insightface_path, "models")
 reswapper_path = os.path.join(models_path, "reswapper")

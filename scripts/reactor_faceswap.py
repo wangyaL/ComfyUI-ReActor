@@ -31,7 +31,8 @@ def get_models():
     models_list = []
     for folder in swappers:
         models_folder = folder + "/*"
-        models_path = os.path.join(folder_paths.models_dir,models_folder)
+        facerestore_models_path = folder_paths.get_folder_paths("facerestore_models")[0]
+        models_path = os.path.join(facerestore_models_path.replace("/facerestore_models", ""),models_folder)
         models = glob.glob(models_path)
         models = [x for x in models if x.endswith(".onnx") or x.endswith(".pth")]
         models_list.extend(models)

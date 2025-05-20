@@ -62,7 +62,8 @@ import scripts.r_masking.segs as masking_segs
 import scripts.reactor_sfw as sfw
 
 
-models_dir = folder_paths.models_dir
+dir_facerestore_models = folder_paths.get_folder_paths("facerestore_models")[0]
+models_dir = dir_facerestore_models.replace("/facerestore_models", "")
 REACTOR_MODELS_PATH = os.path.join(models_dir, "reactor")
 FACE_MODELS_PATH = os.path.join(REACTOR_MODELS_PATH, "faces")
 NSFWDET_MODEL_PATH = os.path.join(models_dir, "nsfw_detector","vit-base-nsfw-detector")
@@ -72,7 +73,6 @@ if not os.path.exists(REACTOR_MODELS_PATH):
     if not os.path.exists(FACE_MODELS_PATH):
         os.makedirs(FACE_MODELS_PATH)
 
-dir_facerestore_models = folder_paths.get_folder_paths("facerestore_models")[0]
 os.makedirs(dir_facerestore_models, exist_ok=True)
 folder_paths.folder_names_and_paths["facerestore_models"] = ([dir_facerestore_models], folder_paths.supported_pt_extensions)
 
