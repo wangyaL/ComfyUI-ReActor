@@ -72,7 +72,7 @@ if not os.path.exists(REACTOR_MODELS_PATH):
     if not os.path.exists(FACE_MODELS_PATH):
         os.makedirs(FACE_MODELS_PATH)
 
-dir_facerestore_models = os.path.join(models_dir, "facerestore_models")
+dir_facerestore_models = folder_paths.get_folder_paths("facerestore_models")[0]
 os.makedirs(dir_facerestore_models, exist_ok=True)
 folder_paths.folder_names_and_paths["facerestore_models"] = ([dir_facerestore_models], folder_paths.supported_pt_extensions)
 
@@ -94,7 +94,7 @@ def get_facemodels():
     return models
 
 def get_restorers():
-    models_path = os.path.join(models_dir, "facerestore_models/*")
+    models_path = os.path.join(dir_facerestore_models, "*")
     models = glob.glob(models_path)
     models = [x for x in models if (x.endswith(".pth") or x.endswith(".onnx"))]
     if len(models) == 0:
